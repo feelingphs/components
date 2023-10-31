@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+@import '_var';
+@import '_mixins';
+
+.components{
+    counter-reset: index;
+    padding:0 20px;
+    .section{
+        margin:24px 0;
+        .component_tit{
+            &::before{
+                counter-increment: index;
+                content: counters(index, '.') '. ';
+            }
+        }
+        .desc{
+            margin-top:16px;
+        }
+    }
+}
+
+// range bar
+.range_bar{
+    .range_border{
+        border:1px solid #ddd;
+        border-radius:20px;
+        padding:4px;
+        margin-top:16px;
+    }
+    .range_track{
+        width:100%;
+        height:8px;
+        border-radius:18px;
+        background:#ddd;
+        position:relative;
+        .range_rail{
+            width:30px;
+            height:8px;
+            background:$black;
+            border-radius:18px;
+            transition:.3s;
+        }
+        .range_thumb{
+            $w: 30px;
+            display:block;
+            width:$w;
+            height:$w;
+            border-radius:50%;
+            background:$black;
+            position:absolute;
+            top:- calc(($w - 8px) / 2);
+            left:0;
+            transition:.3s;
+            @include font(20px, 400, $white, $w){
+                text-align:center;
+            };
+        }
+    }
+
+}
+
+// range slider
+.range_slider{
+    .range_border{
+        border:1px solid #ddd;
+        padding:4px;
+        border-radius:20px;
+        line-height:0;
+        margin-top:16px;
+        .range_track{
+            position:relative;
+        }
+        .range_input{
+            appearance: none;
+            background:transparent;
+            width:100%;
+            height:8px;
+            background:#ddd;
+            border-radius:18px;
+            overflow:hidden;
+            &::-webkit-slider-runnable-track{
+                border-radius:20px;
+            }
+            &::-webkit-slider-thumb{
+                appearance: none;
+                background:$black;
+                box-shadow: -100vw 0 0 100vw $black;
+                width:0px;
+                height:30px;
+                border-radius:50%;
+            }
+
+        }
+    }
+    .range_slider_thumb{
+        $w:30px;
+        width:$w;
+        height:$w;
+        border-radius:50%;
+        position:absolute;
+        top:- calc($w - 19px);
+        left:0;
+        background:$black;
+        user-select:none;
+        @include font(16px, 400, $white, 30px){
+            text-align:center;
+        };
+    }
+
+}
+
+//퀵메뉴
+.quick_top_wrap{
+    .btn_quick{
+
+    }
+    .quick_layer{
+        height: 0;
+        border: 1px solid red;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        transition:0.3s ease-in-out;
+        &.open{
+            
+            height:auto;
+        }
+    }
+}
+
+
+.input_wrap{
+    .input_area{
+        .input_text{
+            width:100%;
+            padding:4px;
+            border:1px solid #ddd;
+            height:40px;
+            box-sizing:border-box;
+            &:focus, &:focus-visible{
+                border:1px solid blue;
+            }
+        }
+        & + .input_area{
+            margin-top:8px;
+        }
+    }
+}
+
+.file_upload_area{
+    $h:40px;
+    input[type=file]{
+        position:absolute;
+        overflow:hidden;
+        width:1px;
+        height:1px;
+        margin:-1px;
+        clip:rect(0 0 0 0);
+        &:focus{
+            & + .btn_upload{
+                outline:2px auto #000;
+                outline-offset:-2px;
+            }
+        }
+    }
+    .file_name{
+        width:calc(100% - 100px);
+        border:1px solid #ddd;
+        padding:4px;
+        height:$h;
+        box-sizing:border-box;
+        float:left;
+        line-height:30px;
+    }
+    .btn_upload{
+        width:100px;
+        height:$h;
+        background:#ddd;
+        display:inline-block;
+        text-align:center;
+        line-height:$h;
+        float:left;
+    }
+    & + .file_upload_area{
+        margin-top:8px;
+    }
+}
+
+.modal{
+    .layer_popup{
+        display:none;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        z-index:10;
+        width:50%;
+        height:50vh;
+        background:#fff;
+    }
+    .btn_open{
+
+    }
+    .btn_close{
+
+    }
+}
+
+#dim{
+    display:none;
+    width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}

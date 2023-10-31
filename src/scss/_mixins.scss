@@ -1,0 +1,9 @@
+@import '_var';
+
+@mixin font($size, $weight, $color, $line){
+    font-size:$size;
+    font-weight:$weight;
+    color:$color;
+    line-height:$line;
+    @content;
+}

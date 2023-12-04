@@ -1,9 +1,12 @@
 .components {
   counter-reset: index;
-  padding: 0 20px;
+  padding: 20px;
 }
 .components .section {
   margin: 24px 0;
+}
+.components .section .component_tit {
+  margin-bottom: 8px;
 }
 .components .section .component_tit::before {
   counter-increment: index;
@@ -11,6 +14,130 @@
 }
 .components .section .desc {
   margin-top: 16px;
+}
+
+.components_list li {
+  list-style: none;
+}
+.components_list input[type=checkbox] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: -1px;
+  left: -1px;
+}
+.components_list input[type=checkbox] + label {
+  padding-left: 24px;
+  position: relative;
+  display: inline-block;
+}
+.components_list input[type=checkbox] + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.components_list input[type=checkbox]:checked + label {
+  position: relative;
+}
+.components_list input[type=checkbox]:checked + label::before {
+  background: #253898;
+  border: 1px solid #253898;
+}
+.components_list input[type=checkbox]:checked + label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 9px;
+  left: 3px;
+  width: 6px;
+  height: 2px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+}
+
+.anchor_tab_area {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.anchor_tab_area .anchor_item {
+  flex: 1;
+  background: #000;
+  position: relative;
+}
+.anchor_tab_area .anchor_item::after {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background: #333;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.anchor_tab_area .anchor_item:last-child::after {
+  display: none;
+}
+.anchor_tab_area .anchor_item.on a {
+  color: #FF5100;
+}
+.anchor_tab_area .anchor_item a {
+  display: block;
+  text-align: center;
+  color: #fff;
+  line-height: 40px;
+}
+
+.tabpanel01 {
+  width: 100%;
+  height: 10vh;
+  background: #333;
+  color: #fff;
+}
+
+.tabpanel02 {
+  width: 100%;
+  height: 10vh;
+  background: #ddd;
+}
+
+.tabpanel03 {
+  width: 100%;
+  height: 10vh;
+  background: #000;
+  color: #fff;
+}
+
+.button_wrap {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+.button_wrap .button {
+  width: 100%;
+  text-align: center;
+}
+.button_wrap .button span {
+  padding: 12px 0;
+  display: inline-block;
+}
+.button_wrap .button.primary {
+  background: #000;
+  color: #fff;
+}
+.button_wrap .button.secondary {
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
 }
 
 .range_bar .range_border {
@@ -98,14 +225,16 @@
 
 .quick_top_wrap .quick_layer {
   height: 0;
-  border: 1px solid red;
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 0;
   left: 0;
+  overflow: hidden;
   transition: 0.3s ease-in-out;
+  transform: translate(0, -100%);
 }
 .quick_top_wrap .quick_layer.open {
+  transform: translate(0, 0);
   height: auto;
 }
 
@@ -168,12 +297,17 @@
   height: 50vh;
   background: #fff;
 }
+.modal .btn_open {
+  display: block;
+  width: 120px;
+  height: 40px;
+}
 #dim {
   display: none;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 0;

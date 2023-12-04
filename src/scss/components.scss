@@ -3,12 +3,14 @@
 @import '_var';
 @import '_mixins';
 
+// 컴포넌트 공통
 .components{
     counter-reset: index;
-    padding:0 20px;
+    padding:20px;
     .section{
         margin:24px 0;
         .component_tit{
+            margin-bottom:8px;
             &::before{
                 counter-increment: index;
                 content: counters(index, '.') '. ';
@@ -16,6 +18,141 @@
         }
         .desc{
             margin-top:16px;
+        }
+    }
+}
+
+// checkbox
+.components_list{
+    li{
+        list-style:none;
+    }
+    input[type=checkbox]{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        top: -1px;
+        left: -1px;
+    }
+    input[type=checkbox]{
+        $w: 14px;
+        & + label{
+            padding-left:24px;
+            position:relative;
+            display:inline-block;
+            &::before{
+                content: "";
+                position: absolute;
+                left: 0;
+                top: calc((24px - $w) / 2);
+                width: $w;
+                height: $w;
+                border: 1px solid #ddd;
+                box-sizing:border-box;
+            }
+        }
+        &:checked{
+            & + label{
+                position:relative;
+                &::before{
+                    background:$blue;
+                    border:1px solid $blue;
+                }
+                &::after{
+                    content:'';
+                    display:inline-block;
+                    position:absolute;
+                    top:9px;
+                    left:3px;
+                    width:6px;
+                    height:2px;
+                    border-left:2px solid $white;
+                    border-bottom:2px solid $white;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}
+
+// anchor tab
+.anchor_tab_area{
+    width:100%;
+    height:40px;
+    display:flex;
+    position:sticky;
+    top:0;
+    left:0;
+    z-index:10;
+    .anchor_item{
+        flex:1;
+        background:$black;
+        position:relative;
+        &::after{
+            content:'';
+            width:1px;
+            height:100%;
+            background:$gray01;
+            position:absolute;
+            right:0;
+            top:0;
+        }
+        &:last-child{
+            &::after{
+                display:none;
+            }
+        }
+        &.on{
+            a{
+                color:$red;
+            }
+        }
+        a{
+            display:block;
+            text-align:center;
+            color:$white;
+            line-height:40px;
+        }
+    }
+}
+.tabpanel01{
+    width:100%;
+    height:10vh;
+    background:$gray01;
+    color:$white;
+} 
+.tabpanel02{
+    width:100%;
+    height:10vh;
+    background:$gray02;
+}
+.tabpanel03{
+    width:100%;
+    height:10vh;
+    background:$black;
+    color:$white;
+}
+
+// button
+.button_wrap{
+    display:flex;
+    justify-content: center;
+    gap:16px;
+    .button{
+        width:100%;
+        text-align:center;
+        span{
+            padding:12px 0;
+            display:inline-block;
+        }
+        &.primary{
+            background:$black;
+            color:$white;
+        }
+        &.secondary{
+            background:$white;
+            color:$black;
+            border:2px solid $black;
         }
     }
 }
@@ -110,21 +247,22 @@
 
 }
 
-//퀵메뉴
+// 퀵메뉴
 .quick_top_wrap{
     .btn_quick{
 
     }
     .quick_layer{
         height: 0;
-        border: 1px solid red;
-        position: absolute;
+        position: fixed;
         width: 100%;
         top: 0;
         left: 0;
+        overflow:hidden;
         transition:0.3s ease-in-out;
+        transform: translate(0, -100%);
         &.open{
-            
+            transform: translate(0, 0);
             height:auto;
         }
     }
@@ -188,6 +326,7 @@
     }
 }
 
+// 레이어팝업
 .modal{
     .layer_popup{
         display:none;
@@ -201,7 +340,9 @@
         background:#fff;
     }
     .btn_open{
-
+        display:block;
+        width:120px;
+        height:40px;
     }
     .btn_close{
 
@@ -213,7 +354,7 @@
     width:100%;
     height:100%;
     background:rgba(0, 0, 0, 0.5);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 0;

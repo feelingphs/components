@@ -16,7 +16,7 @@ body{
 }
 
 div, p, ol, ul, li{
-
+    list-style-type: none;
 }
 
 input[type=text],
@@ -24,4 +24,12 @@ input[type=password],
 input[type=number],
 input[type=range]{
 
+}
+
+button, a{
+    border:0;
+    background:none;
+    text-decoration:none;
+    cursor:pointer;
+    @include font(16px, 400, $black, 1.5);
 }

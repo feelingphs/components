@@ -7,8 +7,63 @@ document.addEventListener("DOMContentLoaded", function(){
 
     quickTop();
 
-    fileUpload()
+    fileUpload();
+
+    stickyTab();
+    
 });
+
+const anchor = document.querySelector(".anchor_tab_area");
+const anchorItem = document.querySelectorAll(".anchor_item");
+const anchorCont = document.querySelector(".tabpanel_wrap").children;
+const anchorHeight = anchor.clientHeight;
+
+function stickyTab() {
+    anchorItem.forEach(function(e, i) {
+        anchorItem[i].addEventListener("click", function(e){
+            e.preventDefault();
+            const anchorBox = anchorCont[i].offsetTop - anchorHeight;
+            window.scrollTo({top:anchorBox, left:0, behavior: 'smooth'});
+        })
+    })
+
+    window.addEventListener("scroll", function(){
+        scrollAction();
+    })
+}
+
+function scrollAction() {
+    anchorItem.forEach(function(e, i) {
+        anchorItem[i].classList.remove("on");
+        if(i == anchorItem.length - 1) {
+            if(window.scrollY >= anchorCont[i].offsetTop - anchorHeight) {
+                anchorItem[i].classList.add("on");
+            }
+        } else {
+            if(window.scrollY >= anchorCont[i].offsetTop - anchorHeight && window.scrollY < anchorCont[i + 1].offsetTop - anchorHeight) {
+                anchorItem[i].classList.add("on");
+            }
+        }
+    })
+}
+
+// slide(normal)
+const slide = ['.yp-yphaus-slide'];
+for(let i = 0; i < slide.length; i++){
+    const swiper = new Swiper(slide[i], {
+        direction: 'horizontal',
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        a11y: {
+            prevSlideMessage: '이전',
+            nextSlideMessage: '다음',
+            slideLabelMessage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다. ',
+        },
+    });
+}
 
 
 

@@ -4,7 +4,7 @@
 @import '_mixins';
 
 // 컴포넌트 공통
-.components{
+.guide{
     counter-reset: index;
     padding:20px;
     .section{
@@ -23,19 +23,19 @@
 }
 
 // checkbox
-.components_list{
+.checkbox_area{
     li{
         list-style:none;
     }
-    input[type=checkbox]{
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        top: -1px;
-        left: -1px;
-    }
-    input[type=checkbox]{
+    .checkbox_input{
         $w: 14px;
+        position:absolute;
+        overflow:hidden;
+        padding:0;
+        width:1px;
+        height:1px;
+        margin:-1px;
+        clip:rect(0 0 0 0);
         & + label{
             padding-left:24px;
             position:relative;
@@ -49,6 +49,9 @@
                 height: $w;
                 border: 1px solid #ddd;
                 box-sizing:border-box;
+            }
+            a{
+                margin-left:8px;
             }
         }
         &:checked{
@@ -75,69 +78,182 @@
     }
 }
 
-// anchor tab
-.anchor_tab_area{
-    width:100%;
-    height:40px;
-    display:flex;
-    position:sticky;
-    top:0;
-    left:0;
-    z-index:10;
-    .anchor_item{
-        flex:1;
-        background:$black;
-        position:relative;
-        &::after{
-            content:'';
-            width:1px;
-            height:100%;
-            background:$gray01;
+// dropdown
+.dropdown_wrap{
+    .dropdown_area{
+        display:flex;
+        gap:8px;
+        .dropdown{
+            display:flex;
+            position:relative;
+            &.sm{
+                width:100px;
+            }
+            &.lg{
+                width:160px;
+            }
+        }
+        .select{
+            width:100%;
+            height:32px;
+            border:1px solid #ddd;
+            background:$white;
+            text-align:left;
+            padding:0 8px;
+            box-sizing:border-box;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='16' height='16'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z' fill='rgba(52,68,76,1)'/%3E%3C/svg%3E");
+            background-repeat:no-repeat;
+            background-position:96% center;
+        }
+        .select_option{
+            display:none;
+            width:100%;
             position:absolute;
-            right:0;
-            top:0;
-        }
-        &:last-child{
-            &::after{
-                display:none;
+            top:31px;
+            left:0;
+            z-index:9;
+            border:1px solid #e8e8e8;
+            background-color:#fff;
+            border-top:0;
+            li{
+                width: 100%;
+                height: 32px;
+                padding: 8px;
+                box-sizing: border-box;
+                cursor:pointer;
+                &:hover{
+                    background:#f8f8f8;
+                }
             }
-        }
-        &.on{
-            a{
-                color:$red;
-            }
-        }
-        a{
-            display:block;
-            text-align:center;
-            color:$white;
-            line-height:40px;
         }
     }
 }
-.tabpanel01{
-    width:100%;
-    height:10vh;
-    background:$gray01;
-    color:$white;
-} 
-.tabpanel02{
-    width:100%;
-    height:10vh;
-    background:$gray02;
+
+// radio
+.radio_wrap{
+    .radio_area{
+        position:relative;
+        .radio_inp{
+            position: absolute;
+            overflow: hidden;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            clip: rect(0, 0, 0, 0);
+            & + label{
+                padding-left:24px;
+                line-height:16px;
+                &::before{
+                    content:'';
+                    position:absolute;
+                    top:50%;
+                    left:0;
+                    width:16px;
+                    height:16px;
+                    border:1px solid #ddd;
+                    box-sizing:border-box;
+                    background:#fff;
+                    border-radius:50%;
+                    transform: translate(0, -50%);
+                }
+            }
+            &:checked{
+                & + label{
+                    &::before{
+                        background:$white;
+                        border:1px solid $black;
+                    }
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 4px;
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        background: $black;
+                        transform: translate(0, -50%);
+                    }
+                }
+                
+            }
+        }
+    }
 }
-.tabpanel03{
-    width:100%;
-    height:10vh;
-    background:$black;
-    color:$white;
+
+// anchor tab
+.anchor_tab{
+    &_wrap{
+
+    }
+    &_area{
+        width:100%;
+        height:40px;
+        display:flex;
+        position:sticky;
+        top:0;
+        left:0;
+        z-index:10;
+        .anchor_item{
+            flex:1;
+            background:$black;
+            position:relative;
+            &::after{
+                content:'';
+                width:1px;
+                height:100%;
+                background:$gray01;
+                position:absolute;
+                right:0;
+                top:0;
+            }
+            &:last-child{
+                &::after{
+                    display:none;
+                }
+            }
+            &.on{
+                a{
+                    color:$red;
+                }
+            }
+            a{
+                display:block;
+                text-align:center;
+                color:$white;
+                line-height:40px;
+            }
+        }
+    }
+    .tabpanel01{
+        width:100%;
+        height:10vh;
+        background:$gray01;
+        color:$white;
+    } 
+    .tabpanel02{
+        width:100%;
+        height:10vh;
+        background:$gray02;
+    }
+    .tabpanel03{
+        width:100%;
+        height:10vh;
+        background:$black;
+        color:$white;
+    }
 }
+
 
 // button
 .button_wrap{
     display:flex;
     justify-content: center;
     gap:16px;
+    & + .button_wrap{
+        margin-top:24px;
+    }
     .button{
         width:100%;
         text-align:center;
@@ -247,12 +363,63 @@
 
 }
 
+.tab_wrap{
+    .tab_area{
+        margin-top:40px;
+        .tabs{
+            @include flex-row(center, start);
+            gap:4px;
+            li{
+                width:120px;
+                height:40px;
+                background:#7a8d97;
+                margin-bottom: -1px;
+                border-radius:4px 4px 0 0;
+                button{
+                    font-size:14px;
+                    color:$white;
+                    width: 100%;
+                    height: 100%;
+                }
+                &.active{
+                    background:$white;
+                    border:1px solid #ddd;
+                    border-bottom: 1px solid #fff;
+                    button{
+                        color:$black;
+                    }
+                }
+            }
+        }
+    }
+    
+    .tabcont_wrap{
+        margin-top:0;
+        .tab_cont{
+            background:$white;
+            border-top:1px solid #ddd;
+            padding-top:24px;
+            display:none;
+            &.active{
+                display:block;
+            }
+            .tit_h2{
+                margin-bottom:16px;
+            }
+        }
+    }
+
+}
+
+
 // 퀵메뉴
 .quick_top_wrap{
     .btn_quick{
 
     }
     .quick_layer{
+        background:$white;
+        border-bottom:1px solid $black;
         height: 0;
         position: fixed;
         width: 100%;
@@ -261,6 +428,7 @@
         overflow:hidden;
         transition:0.3s ease-in-out;
         transform: translate(0, -100%);
+        z-index:10;
         &.open{
             transform: translate(0, 0);
             height:auto;
@@ -327,7 +495,7 @@
 }
 
 // 레이어팝업
-.modal{
+.modal_wrap{
     .layer_popup{
         display:none;
         position:absolute;
@@ -346,6 +514,23 @@
     }
     .btn_close{
 
+    }
+}
+
+.topBtn{
+    display:none;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:#fff;
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    text-align:center;
+    box-shadow: 0px 0px 10px #ddd;
+    z-index:99;
+    i{
+        font-size:24px;
     }
 }
 

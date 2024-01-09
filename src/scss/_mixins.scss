@@ -7,3 +7,88 @@
     line-height:$line;
     @content;
 }
+
+@mixin flex-row($align:center, $justify: center) {
+    display:flex;
+    flex-direction:row;
+
+    @if ($align == start) {
+        align-items:flex-start;
+    } @else if ($align == start) {
+        align-items:flex-end;
+    } @else if ($align == stretch) {
+        align-items:stretch;
+    } @else {
+        align-items:center;
+    }
+
+    @if ($justify == between) {
+        justify-content:space-between;
+    } @else if ($justify == start) {
+        justify-content:flex-start;
+    } @else if ($justify == end) {
+        justify-content:flex-end;
+    } @else if ($justify == center) {
+        justify-content:center;
+    }
+}
+
+@mixin flex-column($align:center, $justify: center) {
+    display:flex;
+    flex-direction:column;
+
+    @if ($align == start) {
+        align-items:flex-start;
+    } @else if ($align == start) {
+        align-items:flex-end;
+    } @else {
+        align-items:center;
+    }
+
+    @if ($justify == between) {
+        justify-content:space-between;
+    } @else if ($justify == start) {
+        justify-content:flex-start;
+    } @else if ($justify == end) {
+        justify-content:flex-end;
+    } @else if ($justify == center) {
+        justify-content:center;
+    }
+}
+
+@mixin ellipsis($lines: 1) {
+    @if ($lines == 1) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+    }
+}
+
+@mixin btn($bg, $color, $width, $height){
+    width:$width;
+    height:$height;
+    background:$bg;
+    color:$color;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    font-size:14px;
+    line-height:22px;
+    font-weight:400;
+}
+
+@mixin keyframes($name){
+    @keyframes #{$name}{
+        @content;
+    }
+}
+
+@mixin animate($animation, $duration, $method, $times){
+    animation: $animation $duration $method $times;
+}

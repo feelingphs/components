@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/dist/css/slider.css">
+</head>
+<body>
+    <section class="section slide">
+        <div class="slide-container">
+            <div class="slide-box">
+                <img src="images/slide01.jpg" width="100%" height="300px">
+            </div>
+            <div class="slide-box">
+                <img src="images/slide02.jpg">
+            </div>
+            <div class="slide-box">
+                <img src="images/slide03.jpg">
+            </div>
+        </div>
+        <div class="slide-idx-button"></div>
+
+        <div class="slide-button">
+            <button class="slide-prev">prev</button>
+            <button class="slide-next">next</button>
+        </div>
+
+    </section>
+
+    <script src="/src/js/slider.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(e){
+            slide(e);
+        });
+    </script>
+</body>
+</html>

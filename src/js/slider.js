@@ -19,14 +19,19 @@ function slide(e) {
 
     idxBtn[0].classList.add("on");
 
+    // 다음 버튼
     nextBtn.addEventListener("click", function(e) {
         slideNext(e);
+        slideLoop();
     });
 
+    // 이전 버튼
     prevBtn.addEventListener("click", function(e) {
         slidePrev(e);
+        slideLoop();
     });
 
+    // 인덱스 버튼
     slideIdxDummy.addEventListener("click", function(e) {
         slideIdxButton(e);
     });
@@ -52,6 +57,7 @@ function slideIdxButton(e) {
     }
 }
 
+// 다음 버튼
 function slideNext(e) {
     const idxBtn = slideIdxDummy.children;
     if(e.target == nextBtn){
@@ -68,6 +74,8 @@ function slideNext(e) {
         slideContainer.style.transform = "translate(" + -slideNumber + "00vw" + ", 0)";
     }
 }
+
+// 이전 버튼
 function slidePrev(e) {
     const idxBtn = slideIdxDummy.children;
     if(e.target == prevBtn){
@@ -85,3 +93,8 @@ function slidePrev(e) {
 }
 
 // 슬라이드 루프 만들기
+function slideLoop() {
+    if(slideBox[3].classList.contains("active")){
+        console.log("ok");
+    }
+}

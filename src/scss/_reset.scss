@@ -7,7 +7,7 @@
 }
 
 html{
-    
+    scroll-behavior:smooth;
 }
 body{
     @include font(16px, 400, $black, 1.5){

@@ -1,18 +1,79 @@
-.guide {
-  counter-reset: index;
-  padding: 20px;
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
 }
-.guide .section {
+
+.lnb {
+  width: 320px;
+  height: 100%;
+  background: #333;
+  box-sizing: border-box;
+  color: #fff;
+  overflow: auto;
+}
+.lnb::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+.lnb::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+.lnb::-webkit-scrollbar-track {
+  background: transparent;
+}
+.lnb .logo {
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.component_list {
+  width: 100%;
+}
+.component_list li.on {
+  background: #fff;
+}
+.component_list li.on a {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1.5;
+}
+.component_list li a {
+  padding: 20px 40px;
+  display: block;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.container {
+  counter-reset: index;
+  padding-left: 320px;
+}
+.container .content {
+  padding: 40px;
+  box-sizing: border-box;
+}
+.container .section + section {
   margin: 24px 0;
 }
-.guide .section .component_tit {
+.container .section .component_tit {
   margin-bottom: 8px;
 }
-.guide .section .component_tit::before {
+.container .section .component_tit::before {
   counter-increment: index;
   content: counters(index, ".") ". ";
 }
-.guide .section .desc {
+.container .section .desc {
   margin-top: 16px;
 }
 

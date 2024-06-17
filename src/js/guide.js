@@ -1,25 +1,37 @@
 document.addEventListener("DOMContentLoaded", function(){
-    
     rangeBar();
     rangeSlider();
-
     layerOpen();
     layerClose();
-
     quickTop();
-
     fileUpload();
-
     stickyTab();
-
     tab();
-    
 });
 
 document.addEventListener("click", function(e){
     dropdown(e);
-    
 });
+document.addEventListener("scroll", function(e){
+    lnbScroll();
+});
+
+// lnb 활성화
+const lnb = document.getElementById("lnb");
+lnb.addEventListener("click", function(e){
+    lnbActive(e);
+});
+function lnbActive(e) {
+    const lnbMenu = document.querySelectorAll(".component_item a");
+    lnbMenu.forEach(function(item){
+        item.parentElement.classList.remove("on");
+    })
+    e.target.parentElement.classList.add("on");
+}
+function lnbScroll(){
+    const section = document.querySelectorAll(".section");
+    
+}
 
 // tab
 function tab() {

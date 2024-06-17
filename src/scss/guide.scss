@@ -3,12 +3,66 @@
 @import '_var';
 @import '_mixins';
 
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+}
+.lnb{
+    width:320px;
+    height:100%;
+    background:#333;
+    box-sizing:border-box;
+    color:$white;
+    overflow:auto;
+    &::-webkit-scrollbar{
+        width:0px;
+        height:0px;
+    }
+    &::-webkit-scrollbar-thumb{
+        background:transparent;
+    }
+    &::-webkit-scrollbar-track{
+        background:transparent;
+    }
+    .logo{
+        padding:40px;
+        width:100%;
+        box-sizing:border-box;
+        @include font(24px, 700, $white, 1.5);
+    }
+}
+.component_list{
+    width:100%;
+    li{
+        &.on{
+            background:$white;
+            a{
+                @include font(18px, 700, $black, 1.5);
+            }
+        }
+        a{
+            padding: 20px 40px;
+            display: block;
+            box-sizing:border-box;
+            @include font(18px, 400, $white, 1.5);
+        }
+    }
+}
+
 // 컴포넌트 공통
-.guide{
+.container{
     counter-reset: index;
-    padding:20px;
+    padding-left:320px;
+    .content{
+        padding:40px;
+        box-sizing:border-box;
+    }
     .section{
-        margin:24px 0;
+        & + section{
+            margin:24px 0;
+        }
         .component_tit{
             margin-bottom:8px;
             &::before{

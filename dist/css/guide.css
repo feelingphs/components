@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .header {
   position: fixed;
   top: 0;
@@ -537,4 +538,34 @@
   top: 0;
   left: 0;
   z-index: 0;
-}/*# sourceMappingURL=guide.css.map */
+}
+
+/* 앱 설치 레이어팝업 */
+.modal_app {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 24px 20px;
+  z-index: 20;
+  box-sizing: border-box;
+  font-family: "Happiness-Sans", "sans-serif";
+}
+.modal_app .greeting {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+.modal_app .greeting img {
+  width: 64px;
+}
+.modal_app .greeting span {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #000;
+  font-weight: 700;
+  word-break: keep-all;
+}
+
+/* // 앱 설치 레이어팝업 *//*# sourceMappingURL=guide.css.map */

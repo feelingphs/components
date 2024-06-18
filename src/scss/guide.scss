@@ -598,3 +598,48 @@
     left: 0;
     z-index: 0;
 }
+
+/* 앱 설치 레이어팝업 */
+.modal_app {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+    padding: 24px 20px;
+    z-index: 20;
+    box-sizing: border-box;
+    font-family: 'Happiness-Sans','sans-serif';
+    .greeting {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 24px;
+        align-items: center;
+        img {
+            width: 64px;
+        }
+        span {
+            font-size: 1rem;
+            line-height: 1.4;
+            color: #000;
+            font-weight: 700;
+            word-break: keep-all;
+        }
+    }
+    // .button_wrap .button {
+    //     background: #171A19;
+    //     width: 100%;
+    //     height: 56px;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     & + .button {
+    //         margin-top: 12px;
+    //     }
+    //     span {
+    //         color: #fff;
+    //         font-size: 0.875rem;
+    //         font-weight: 700;
+    //     }
+    // }
+}
+/* // 앱 설치 레이어팝업 */

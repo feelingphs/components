@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
     fileUpload();
     stickyTab();
     tab();
+    layerBottom();
 });
 
 document.addEventListener("click", function(e){
@@ -318,3 +319,18 @@ window.addEventListener('scroll', function(){
 topBtn.addEventListener('click', function(){
     window.scrollTo({left:0, top:0, behavior: 'smooth'});
 });
+
+// 레이어 바텀
+function layerBottom(){
+    const modal = document.getElementById("modalApp");
+    const modalHeight = modal.offsetHeight;
+    const modalClose = document.getElementById("modalClose");
+
+    modalClose.addEventListener("click", function(){
+        modal.style.marginBottom = -modalHeight + "px";
+        modal.style.transition = "ease-in-out 0.5s";
+        setTimeout(function(){
+            modal.style.display = "none";
+        }, 500)
+    })
+}
